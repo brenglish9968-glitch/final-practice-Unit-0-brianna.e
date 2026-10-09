@@ -85,3 +85,52 @@ activeSprintTasks.push("Fix CSS Grid Crash");
 // 3. Display the updated list of items left to tackle
 console.log("Remaining tasks for the afternoon session:", activeSprintTasks);
 // Output: Remaining tasks for the afternoon session: (3) ['Database Indexing', 'Clean Documentation', 'Fix CSS Grid Crash']
+
+const dailyTaskBacklog = [
+  ["Refactor API Schema", 3, "High"],
+  ["Write Integration Tests", 2, "Medium"],
+  ["Review PR for Team Lead", 1, "Low"]
+];
+
+let totalEstimatedHours = 0;
+
+console.log("--- High Priority Focus Items ---");
+
+// Sequential loop to scan the entire 2D array
+for (let i = 0; i < dailyTaskBacklog.length; i++) {
+  const taskName = dailyTaskBacklog[i][0];
+  const taskHours = dailyTaskBacklog[i][1];
+  const priority = dailyTaskBacklog[i][2];
+
+  // Aggregate total time required
+  totalEstimatedHours += taskHours;
+
+  // Conditional check inside the loop to surface urgent items
+  if (priority === "High") {
+    console.log(`⭐ Target First: ${taskName} (${taskHours}h)`);
+  }
+}
+
+console.log(`\nTotal estimated engineering time: ${totalEstimatedHours} hours.`);
+//--- High Priority Focus Items ---
+// ⭐ Target First: Refactor API Schema (3h)
+// Total estimated engineering time: 6 hours.
+
+
+let notificationQueue = ["Slack DM", "GitHub PR Review Alert", "Jira Update Notification"];
+
+console.log(`Clearing ${notificationQueue.length} interruptions to enter focus mode...`);
+
+// Conditional loop that executes as long as items remain in the queue
+while (notificationQueue.length > 0) {
+  // Remove and process the top alert
+  const dismissedAlert = notificationQueue.pop();
+  console.log(`[Muted & Archived] ${dismissedAlert}`);
+}
+
+console.log("🟢 Queue empty. Your quiet environment is ready.");
+// Clearing 3 interruptions to enter focus mode...
+// [Muted & Archived] Jira Update Notification
+// [Muted & Archived] GitHub PR Review Alert
+// [Muted & Archived] Slack DM
+// 🟢 Queue empty. Your quiet environment is ready.
